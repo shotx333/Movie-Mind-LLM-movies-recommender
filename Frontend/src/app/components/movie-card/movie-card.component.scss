@@ -1,0 +1,54 @@
+.movie-details {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .imdb-section {
+    margin-bottom: 10px;
+
+    .imdb-link {
+      text-decoration: none;
+      display: inline-block;
+
+      &:hover .imdb-badge {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .imdb-badge {
+      display: flex;
+      align-items: center;
+      background-color: #f5c518; 
+      border-radius: 4px;
+      padding: 5px 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+      .imdb-logo {
+        font-weight: 700;
+        color: #000;
+        margin-right: 8px;
+      }
+
+      .imdb-rating {
+        background-color: #000;
+        color: #fff;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+
+        .rating-star {
+          color: #f5c518;
+          margin-right: 4px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

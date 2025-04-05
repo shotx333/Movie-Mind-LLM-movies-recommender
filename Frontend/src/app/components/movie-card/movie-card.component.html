@@ -1,0 +1,48 @@
+<div class="movie-card" [class.expanded]="isExpanded">
+  <div class="card-header">
+    <div class="title-container">
+      <h3 class="movie-title">{{ movie.title }}</h3>
+      <span class="movie-year">({{ movie.year }})</span>
+    </div>
+  </div>
+
+  <div class="movie-details">
+    <div class="imdb-section" *ngIf="movie.imdbId">
+      <a [href]="movie.imdbUrl" target="_blank" class="imdb-link">
+        <div class="imdb-badge">
+          <span class="imdb-logo">IMDb</span>
+          <span class="imdb-rating" *ngIf="movie.imdbRating">
+            <i class="rating-star">★</i> {{ movie.imdbRating.toFixed(1) }}
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Director:</span>
+      <span class="value">{{ movie.director }}</span>
+    </div>
+
+    <div class="detail-row">
+      <span class="label">Genre: </span>
+      <span class="value">{{ movie.genre }}</span>
+    </div>
+
+    <div class="match-score" [style.background-color]="getMatchScoreColor()">
+      <span class="score-value">{{ (movie.matchScore * 100).toFixed(0) }}%</span>
+      <span class="score-label">{{ getMatchScoreLabel() }}</span>
+    </div>
+
+    <div class="plot-section">
+      <h4>Plot Summary</h4>
+      <p>{{ movie.plot }}</p>
+    </div>
+
+    <div class="reasoning-section" [class.visible]="isExpanded">
+      <h4>Why This Matches Your Description</h4>
+      <p>{{ movie.reasoning }}</p>
+    </div>
+  </div>
+
+
+</div>

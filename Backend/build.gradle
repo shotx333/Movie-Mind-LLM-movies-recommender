@@ -1,0 +1,58 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.3'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.shotx'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springAiVersion', "0.8.1")
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-anthropic-spring-boot-starter
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.4.3'
+
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.4.3'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '3.4.3'
+
+	// Spring AI dependencies
+	implementation group: 'org.springframework.ai', name: 'spring-ai-anthropic-spring-boot-starter', version: '1.0.0-M6'
+// https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-openai
+
+	implementation group: 'org.springframework.ai', name: 'spring-ai-openai', version: '1.0.0-M6'
+// https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-mistral-ai-spring-boot-starter
+	implementation group: 'org.springframework.ai', name: 'spring-ai-mistral-ai-spring-boot-starter', version: '1.0.0-M6'
+
+	// Lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.36'
+	annotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+	// Testing
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.4.3'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

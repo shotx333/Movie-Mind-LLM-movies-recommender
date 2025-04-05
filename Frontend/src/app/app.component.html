@@ -1,0 +1,44 @@
+<div class="app-container">
+  <div class="wrapper">
+    <img src="images/logo.png" alt="Logo" width="276px" height="150px">
+  </div>
+
+  <div class="description">
+      <h1>Movie Mind - AI-Powered Movie Recommendations</h1>
+      <p>Describe the movie you're looking for, and AI will find matches for you!</p>
+      <p>Powered by multiple AI providers: Claude, ChatGPT, and Mistral AI</p>
+</div>
+
+  <main>
+    <app-movie-search
+      (moviesReceived)="onMoviesReceived($event)"
+      (loadingChange)="onLoadingChange($event)"
+      (error)="onError($event)">
+    </app-movie-search>
+
+    <div *ngIf="isLoading" class="loading-indicator">
+      <div class="spinner"></div>
+      <p>Searching for perfect matches...</p>
+    </div>
+
+    <div *ngIf="hasError" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <div #resultsSection></div> <!-- Reference element for scrolling -->
+
+    <div *ngIf="!isLoading && movies.length > 0" class="results-header">
+      <h2>Your Recommended Movies</h2>
+      <button class="clear-button" (click)="clearResults()">Clear Results</button>
+    </div>
+
+    <app-movie-results
+      *ngIf="!isLoading && movies.length > 0"
+      [movies]="movies">
+    </app-movie-results>
+  </main>
+  <footer>
+    <p>Made by ShotX 2025 &copy;</p>
+  </footer>
+
+</div>

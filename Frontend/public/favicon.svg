@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background Circle -->
+  <circle cx="32" cy="32" r="30" fill="#3f51b5"/>
+
+  <!-- Film Reel -->
+  <circle cx="32" cy="32" r="24" fill="#283593" stroke="#fff" stroke-width="2"/>
+
+  <!-- Film Sprocket Holes -->
+  <circle cx="32" cy="15" r="4" fill="#fff"/>
+  <circle cx="49" cy="32" r="4" fill="#fff"/>
+  <circle cx="32" cy="49" r="4" fill="#fff"/>
+  <circle cx="15" cy="32" r="4" fill="#fff"/>
+
+  <!-- Decorative Film Sprocket Holes -->
+  <circle cx="22" cy="22" r="2.5" fill="#c5cae9"/>
+  <circle cx="42" cy="22" r="2.5" fill="#c5cae9"/>
+  <circle cx="42" cy="42" r="2.5" fill="#c5cae9"/>
+  <circle cx="22" cy="42" r="2.5" fill="#c5cae9"/>
+
+  <!-- AI Brain Symbol (Connecting Lines) -->
+  <path d="M32 15 L42 22 L49 32 L42 42 L32 49 L22 42 L15 32 L22 22 Z"
+        fill="none" stroke="#fff" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Pulse/Wave (AI Intelligence) -->
+  <path d="M24 32 Q28 26, 32 32 Q36 38, 40 32"
+        fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

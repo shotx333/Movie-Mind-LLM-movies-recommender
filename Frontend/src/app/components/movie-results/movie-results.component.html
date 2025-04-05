@@ -1,0 +1,13 @@
+<div class="results-container">
+  <div class="results-grid">
+    <app-movie-card
+      class="bordered"
+      *ngFor="let movie of movies"
+      [movie]="movie">
+    </app-movie-card>
+  </div>
+
+  <div *ngIf="movies.length === 0" class="no-results">
+    <p>No movie recommendations found. Try a different description.</p>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="search-container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="description">What kind of movie are you looking for?</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        rows="5"
+        placeholder="Describe the movie you want to watch... (plot elements, mood, style, era, etc.)">
+      </textarea>
+
+      <div class="validation-error" *ngIf="searchForm.get('description')?.invalid && searchForm.get('description')?.touched">
+        <span *ngIf="searchForm.get('description')?.errors?.['required']">
+          Please enter a movie description.
+        </span>
+        <span *ngIf="searchForm.get('description')?.errors?.['minlength']">
+          Description must be at least 10 characters.
+        </span>
+      </div>
+    </div>
+
+    <div class="form-options">
+      <div class="form-group">
+        <label for="maxResults">Number of results:</label>
+        <select id="maxResults" formControlName="maxResults">
+          <option [value]="3">3</option>
+          <option [value]="3">5</option>
+        </select>
+      </div>
+
+      <div class="form-group provider-selection">
+        <label for="provider">AI Provider:</label>
+        <div *ngIf="providersLoading" class="provider-loading">Loading providers...</div>
+        <div *ngIf="providersError" class="provider-error">Failed to load providers</div>
+        <select *ngIf="!providersLoading && !providersError" id="provider" formControlName="provider">
+          <option *ngFor="let provider of availableProviders" [value]="provider.id">
+            {{ provider.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="searchForm.invalid" class="search-button">
+      <span>Find Movies with {{ getSelectedProviderName() }}</span>
+    </button>
+  </form>
+
+  <div class="examples-section">
+    <h3>Need inspiration? Try one of these:</h3>
+    <div class="example-chips">
+      <span *ngFor="let example of exampleDescriptions" class="example-chip" (click)="useExample(example)">
+        {{ example.length > 65 ? example.substring(0, 65) + '...' : example }}
+      </span>
+    </div>
+  </div>
+</div>
